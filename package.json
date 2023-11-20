@@ -41,5 +41,8 @@
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": "eslint --fix",
     "*": "prettier --write --ignore-unknown"
-  }
+  },
+  "files": [
+    "dist"
+  ]
 }
