@@ -4,7 +4,8 @@
   "description": "Minimal TypeScript package",
   "scripts": {
     "build": "env NODE_ENV=production tsup",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "vitest --run",
+    "test:watch": "vitest",
     "prepare": "husky install"
   },
   "author": "Cody Pope",
@@ -22,8 +23,10 @@
     "husky": "^8.0.3",
     "lint-staged": "^15.1.0",
     "prettier": "^3.1.0",
+    "ts-node": "^10.9.1",
     "tsup": "^8.0.0",
-    "typescript": "^5.2.2"
+    "typescript": "^5.3.2",
+    "vitest": "^0.34.6"
   },
   "eslintConfig": {
     "extends": [

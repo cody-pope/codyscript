@@ -13,5 +13,6 @@ export const tsup: Options = {
   watch: env === "development",
   target: "es2020",
   outDir: env === "production" ? "dist" : "lib",
-  entry: ["src/**/*.ts"],
+  entry: ["src/**/*.ts", "!src/**/*.test.ts"],
+  cjsInterop: true,
 };
