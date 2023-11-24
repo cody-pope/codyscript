@@ -1,7 +1,7 @@
 {
-  "name": "minimal-ts-package",
+  "name": "workflow",
   "version": "0.0.1",
-  "description": "Minimal TypeScript package",
+  "description": "Minimal Workflow Engine",
   "scripts": {
     "build": "env NODE_ENV=production tsup",
     "test": "vitest --run",

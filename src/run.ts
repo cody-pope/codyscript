@@ -1,9 +1,30 @@
 import { Type, Value } from "./type";
+import { Registry } from "./registry";
+
+const operationExecutors = new Registry<
+  (...args: Value[]) => Promise<Value | undefined>
+>();
+
+export const registerOperationExecutor = (
+  meta: OperationExecutionMetadata,
+  executor: (...args: Value[]) => Promise<Value | undefined>,
+) => {
+  if (operationExecutors.get(meta.type)) {
+    throw new Error(`Already registered executor ${meta.type}.`);
+  }
+  operationExecutors.add(meta.type, executor);
+};
+
+export interface OperationExecutionMetadata {
+  type: string;
+
+  [meta: string]: string;
+}
 
 export interface OperationMetadata {
   op: string[];
   v: string;
-  at: string;
+  at: OperationExecutionMetadata;
   in?: { [arg: string]: Type };
   out?: Type;
 }
