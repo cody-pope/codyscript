@@ -5,7 +5,7 @@ export const tsup: Options = {
   minify: true,
   outDir: "dist",
   target: "es2020",
-  entry: ["src/**/*.ts", "!src/**/*.test.ts"],
+  entry: ["src/index.ts"],
   dts: true,
   format: "esm",
 };
