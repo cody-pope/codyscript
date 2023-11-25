@@ -40,8 +40,8 @@ describe("workflow", async () => {
     });
     Executors.register("local2", async (op, input) => {
       expect(op).toStrictEqual(op2);
-      expect(input).toStrictEqual({ a: 3, b: 1 });
-      return (input.a as number) + (input.b as number);
+      expect(input).toStrictEqual({ a: 3, b: 2 });
+      return (input.a as number) * (input.b as number);
     });
     const workflow = new Workflow({
       meta: {
@@ -53,7 +53,7 @@ describe("workflow", async () => {
             op: { id: "add", exe: "local" },
           },
           {
-            in: { num3: "a", num1: "b" },
+            in: { num3: "a", num2: "b" },
             out: "num4",
             op: { id: "add", exe: "local2" },
           },
@@ -61,6 +61,6 @@ describe("workflow", async () => {
       },
       state: { pc: 0, vars: { num1: 1, num2: 2 } },
     });
-    await expect(workflow.progress()).resolves.toBe(4);
+    await expect(workflow.progress()).resolves.toBe(6);
   });
 });
