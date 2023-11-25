@@ -40,7 +40,10 @@
   },
   "prettier": {},
   "lint-staged": {
-    "*.{js,jsx,ts,tsx}": "eslint --fix",
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "vitest related --run"
+    ],
     "*": "prettier --write --ignore-unknown"
   },
   "files": [
