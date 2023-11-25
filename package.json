@@ -1,6 +1,6 @@
 {
   "name": "@cody-pope/workflow",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Minimal engine for distributed workflows!",
   "author": "Cody Pope",
   "license": "MIT",
