@@ -4,7 +4,7 @@ export const tsup: Options = {
   clean: true,
   minify: true,
   outDir: "dist",
-  entry: ["src/index.ts"],
+  entry: ["src/**/*.ts", "!src/**/*.test.ts"],
   dts: true,
   format: ["cjs", "esm"],
 };
