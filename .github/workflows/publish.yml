@@ -1,10 +1,10 @@
-name: release
-concurrency: release
+name: publish
+concurrency: publish
 on:
   release:
     types: [published]
 jobs:
-  build:
+  publish:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
