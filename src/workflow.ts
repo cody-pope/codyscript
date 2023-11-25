@@ -22,9 +22,20 @@ export class Workflow {
     }
     while (this.state.pc >= 0 && this.state.pc < this.meta.do.length) {
       const step = this.meta.do[this.state.pc];
-      const result = await this.execute(step);
-      if (step.out && result) {
-        this.state.vars[step.out] = result;
+      if (step instanceof Array) {
+        const results = await Promise.all(
+          step.map((concurrent_step) => this.execute(concurrent_step)),
+        );
+        results.forEach((result, index) => {
+          if (step[index].out && result) {
+            this.state.vars[step[index].out] = result;
+          }
+        });
+      } else {
+        const result = await this.execute(step);
+        if (step.out && result) {
+          this.state.vars[step.out] = result;
+        }
       }
       this.state.pc++;
     }

@@ -51,7 +51,7 @@ export type StepMetadata = {
 export type WorkflowMetadata = {
   in?: { [arg: string]: Types };
   out?: string;
-  do: StepMetadata[];
+  do: (StepMetadata | StepMetadata[])[];
 };
 
 export type WorkflowState = {
