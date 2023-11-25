@@ -64,6 +64,31 @@ describe("workflow", async () => {
     await expect(workflow.progress()).resolves.toBe(6);
   });
 
+  test("can execute workflow from existing state", async () => {
+    Executors.register("local2", async (op, input) => {
+      return (input.a as number) + (input.b as number);
+    });
+    const workflow = new Workflow({
+      meta: {
+        out: "num4",
+        do: [
+          {
+            in: { num1: "a", num2: "b" },
+            out: "num3",
+            op: { id: "add", exe: "local" },
+          },
+          {
+            in: { num3: "a", num2: "b" },
+            out: "num4",
+            op: { id: "add", exe: "local2" },
+          },
+        ],
+      },
+      state: { pc: 1, vars: { num1: 1, num2: 2, num3: 88 } },
+    });
+    await expect(workflow.progress()).resolves.toBe(90);
+  });
+
   test("can execute workflow with concurrent steps", async () => {
     Executors.register("local", async (op, input) => {
       return (input.a as number) + (input.b as number);
