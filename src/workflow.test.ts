@@ -7,7 +7,7 @@ describe("workflow", async () => {
     Executors.clear();
   });
 
-  test("can execute simple workflow", async () => {
+  test("can execute workflow with one step", async () => {
     const operationMetadata = { id: "add", exe: "local" };
     Executors.register("local", async (op, input) => {
       expect(op).toStrictEqual(operationMetadata);
@@ -30,26 +30,37 @@ describe("workflow", async () => {
     await expect(workflow.progress()).resolves.toBe(3);
   });
 
-  test("can execute simple workflow", async () => {
-    const operationMetadata = { id: "add", exe: "local" };
+  test("can execute workflow with two steps", async () => {
+    const op1 = { id: "add", exe: "local" };
+    const op2 = { id: "add", exe: "local2" };
     Executors.register("local", async (op, input) => {
-      expect(op).toStrictEqual(operationMetadata);
+      expect(op).toStrictEqual(op1);
       expect(input).toStrictEqual({ a: 1, b: 2 });
+      return (input.a as number) + (input.b as number);
+    });
+    Executors.register("local2", async (op, input) => {
+      expect(op).toStrictEqual(op2);
+      expect(input).toStrictEqual({ a: 3, b: 1 });
       return (input.a as number) + (input.b as number);
     });
     const workflow = new Workflow({
       meta: {
-        out: "num3",
+        out: "num4",
         do: [
           {
             in: { num1: "a", num2: "b" },
             out: "num3",
             op: { id: "add", exe: "local" },
           },
+          {
+            in: { num3: "a", num1: "b" },
+            out: "num4",
+            op: { id: "add", exe: "local2" },
+          },
         ],
       },
       state: { pc: 0, vars: { num1: 1, num2: 2 } },
     });
-    await expect(workflow.progress()).resolves.toBe(3);
+    await expect(workflow.progress()).resolves.toBe(4);
   });
 });
