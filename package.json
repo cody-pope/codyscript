@@ -1,23 +1,21 @@
 {
   "name": "workflow",
   "version": "0.0.1",
-  "description": "Minimal Workflow Engine",
+  "description": "Minimal engine for distributed workflows!",
   "scripts": {
-    "build": "env NODE_ENV=production tsup",
+    "build": "tsup",
     "test": "vitest --run",
     "test:watch": "vitest",
+    "test:coverage": "vitest --run --coverage",
     "prepare": "husky install"
   },
   "author": "Cody Pope",
   "license": "MIT",
-  "main": "lib/index.cjs",
-  "module": "lib/index.js",
-  "types": "lib/index.d.ts",
-  "type": "module",
   "devDependencies": {
     "@types/node": "^20.9.2",
     "@typescript-eslint/eslint-plugin": "^6.11.0",
     "@typescript-eslint/parser": "^6.11.0",
+    "@vitest/coverage-v8": "^0.34.6",
     "eslint": "^8.54.0",
     "eslint-config-prettier": "^9.0.0",
     "husky": "^8.0.3",
