@@ -7,5 +7,5 @@ export const tsup: Options = {
   target: "es2020",
   entry: ["src/**/*.ts", "!src/**/*.test.ts"],
   dts: true,
-  format: ["cjs", "esm"],
+  format: "esm",
 };
