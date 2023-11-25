@@ -1,7 +1,13 @@
 {
-  "name": "workflow",
+  "name": "@cody-pope/workflow",
   "version": "0.0.1",
   "description": "Minimal engine for distributed workflows!",
+  "author": "Cody Pope",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cody-pope/workflow.git"
+  },
   "scripts": {
     "build": "tsup",
     "test": "vitest --run",
@@ -9,8 +15,6 @@
     "test:coverage": "vitest --run --coverage",
     "prepare": "husky install"
   },
-  "author": "Cody Pope",
-  "license": "MIT",
   "devDependencies": {
     "@types/node": "^20.9.2",
     "@typescript-eslint/eslint-plugin": "^6.11.0",
