@@ -1,12 +1,12 @@
 {
-  "name": "@cody-pope/workflow",
-  "version": "0.0.3",
-  "description": "Minimal engine for distributed workflows!",
+  "name": "@cody-pope/codyscript",
+  "version": "0.0.1",
+  "description": "It's CodyScript! Hope you like JSON.",
   "author": "Cody Pope",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cody-pope/workflow.git"
+    "url": "git+https://github.com/cody-pope/codyscript.git"
   },
   "type": "module",
   "main": "dist/index.js",
