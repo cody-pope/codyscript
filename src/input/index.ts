@@ -1,9 +1,9 @@
 import { Reference, References } from "./reference";
 import { Constant, Constants } from "./constant";
 import { Operation, Operations } from "./operation";
-import { Value } from "../type";
 import { StackFrame } from "../stack";
 import { Method, Methods } from "./method";
+import { Value } from "../value";
 
 export type Input = Constant | Method | Operation | Reference;
 

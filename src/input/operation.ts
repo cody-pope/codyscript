@@ -1,6 +1,6 @@
-import { Value } from "../type";
 import { Resolver } from "./index";
 import { Executors } from "../executor";
+import { Value } from "../value";
 
 export type Operation = {
   $: "op";

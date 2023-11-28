@@ -1,4 +1,4 @@
-import { Value } from "./type";
+import { Value } from "./value";
 
 export type StackFrame = {
   variables: { [name: string]: Value };

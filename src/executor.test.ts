@@ -12,12 +12,6 @@ describe("executor", async () => {
     expect(Executors.load("test")).toBe(executor);
   });
 
-  test("can register executor by metadata", async () => {
-    const executor = async () => {};
-    Executors.register({ id: "test" }, executor);
-    expect(Executors.load({ id: "test" })).toBe(executor);
-  });
-
   test("prevents duplicate executors", async () => {
     const executor = async () => {};
     const executor2 = async () => {};

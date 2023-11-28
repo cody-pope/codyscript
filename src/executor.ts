@@ -1,5 +1,5 @@
 import { Registry } from "./registry";
-import { ExecutionMeta, ExecutorMeta, Value } from "./type";
+import { Value } from "./value";
 
 export type Executor = ({
   op,
@@ -22,11 +22,11 @@ const executors = new Registry<Executor>({
 });
 
 export const Executors = {
-  register(exe: string | ExecutorMeta, executor: Executor) {
-    executors.add(typeof exe === "string" ? exe : exe.id, executor);
+  register(exe: string, executor: Executor) {
+    executors.add(exe, executor);
   },
-  load(exe: string | ExecutionMeta) {
-    return executors.get(typeof exe === "string" ? exe : exe.id);
+  load(exe: string) {
+    return executors.get(exe);
   },
   clear() {
     executors.clear();

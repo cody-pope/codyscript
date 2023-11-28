@@ -1,5 +1,5 @@
-import { Value } from "../type";
 import { Resolver } from "./index";
+import { Value } from "../value";
 
 export type Constant = {
   $: "val";
