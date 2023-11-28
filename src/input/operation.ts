@@ -1,5 +1,5 @@
 import { Resolver } from "./index";
-import { Executors } from "../executor";
+import { executors } from "../executor";
 import { Value } from "../value";
 
 export type Operation = {
@@ -22,7 +22,7 @@ export type Operation = {
 
 export const Operations: Resolver<Operation> = {
   async resolve({ frame, input: op }) {
-    const func = Executors.load(op.exe.id);
+    const func = executors.get(op.exe.id);
     let input: { [arg: string]: Value } | undefined;
     if (op.op.map) {
       input = {};

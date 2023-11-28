@@ -15,7 +15,7 @@ export type Executor = ({
   input?: { [arg: string]: Value };
 }) => Promise<{ value?: Value } | void>;
 
-const executors = new Registry<Executor>({
+export const executors = new Registry<Executor>({
   name: "executor",
   preventDuplicates: true,
   preventFalsy: true,
@@ -24,11 +24,5 @@ const executors = new Registry<Executor>({
 export const Executors = {
   register(exe: string, executor: Executor) {
     executors.add(exe, executor);
-  },
-  load(exe: string) {
-    return executors.get(exe);
-  },
-  clear() {
-    executors.clear();
   },
 };

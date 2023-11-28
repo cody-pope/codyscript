@@ -1,11 +1,11 @@
 import { afterEach, describe, expect, test } from "vitest";
-import { Executor, Executors } from "../executor";
+import { Executor, executors, Executors } from "../executor";
 import { Operation, Operations } from "./operation";
 import { StackFrame } from "../stack";
 
 describe("operation", async () => {
   afterEach(() => {
-    Executors.clear();
+    executors.clear();
   });
 
   test("can call basic op", async () => {
