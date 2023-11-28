@@ -1,5 +1,19 @@
 import { Registry } from "./registry";
-import { ExecutionMetadata, Executor, ExecutorMetadata } from "./types";
+import { ExecutionMeta, ExecutorMeta, Value } from "./type";
+
+export type Executor = ({
+  op,
+  arg,
+  input,
+}: {
+  op: string;
+  arg?:
+    | Value
+    | {
+        [arg: string]: Value;
+      };
+  input?: { [arg: string]: Value };
+}) => Promise<{ value?: Value } | void>;
 
 const executors = new Registry<Executor>({
   name: "executor",
@@ -8,10 +22,10 @@ const executors = new Registry<Executor>({
 });
 
 export const Executors = {
-  register(exe: string | ExecutorMetadata, executor: Executor) {
+  register(exe: string | ExecutorMeta, executor: Executor) {
     executors.add(typeof exe === "string" ? exe : exe.id, executor);
   },
-  load(exe: string | ExecutionMetadata) {
+  load(exe: string | ExecutionMeta) {
     return executors.get(typeof exe === "string" ? exe : exe.id);
   },
   clear() {
