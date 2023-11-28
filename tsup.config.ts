@@ -4,8 +4,12 @@ export const tsup: Options = {
   clean: true,
   minify: true,
   outDir: "dist",
-  target: "es2020",
+  target: "esnext",
   entry: ["src/index.ts"],
-  dts: true,
+  dts: {
+    compilerOptions: {
+      moduleResolution: "node",
+    },
+  },
   format: "esm",
 };
