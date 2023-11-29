@@ -1,7 +1,7 @@
-import { Set } from "./set";
+import { Set, Sets } from "./set";
 import { Return, Returns } from "./return";
-import { Loop } from "./loop";
-import { Condition } from "./condition";
+import { Loop, Loops } from "./loop";
+import { Condition, Conditions } from "./condition";
 import { StackFrame } from "../stack";
 
 export type Instruction = Condition | Loop | Return | Set;
@@ -20,6 +20,12 @@ export const Instructions: Handler<Instruction> = {
   async handle({ frame, instruction }) {
     if (instruction.$ === "ret") {
       return Returns.handle({ frame, instruction });
+    } else if (instruction.$ === "set") {
+      return Sets.handle({ frame, instruction });
+    } else if (instruction.$ === "for") {
+      return Loops.handle({ frame, instruction });
+    } else if (instruction.$ === "if") {
+      return Conditions.handle({ frame, instruction });
     } else {
       throw new Error(`Unknown instruction type ${instruction["$"]}!`);
     }

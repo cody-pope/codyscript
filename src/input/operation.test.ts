@@ -93,6 +93,7 @@ describe("operation", async () => {
 
   test("can call op with input vars", async () => {
     const executor: Executor = async ({ op, arg, input }) => {
+      console.log("INPUT:", input);
       expect(op).toBe("blah");
       expect(arg).toBe("huh");
       expect(input).toStrictEqual({
@@ -113,8 +114,8 @@ describe("operation", async () => {
       op: {
         id: "blah",
         map: {
-          num1: "a",
-          num2: "b",
+          a: { $: "ref", ref: "num1" },
+          b: { $: "ref", ref: "num2" },
         },
       },
       exe: {

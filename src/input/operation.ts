@@ -1,4 +1,4 @@
-import { Resolver } from "./index";
+import { Input, Inputs, Resolver } from "./index";
 import { executors } from "../executor";
 import { Value } from "../value";
 
@@ -7,7 +7,7 @@ export type Operation = {
   op: {
     id: string;
     map?: {
-      [ref: string]: string;
+      [arg: string]: Input;
     };
   };
   exe: {
@@ -26,9 +26,11 @@ export const Operations: Resolver<Operation> = {
     let input: { [arg: string]: Value } | undefined;
     if (op.op.map) {
       input = {};
-      Object.entries(op.op.map).map(([from, to]) => {
-        input[to] = frame.variables[from];
-      });
+      await Promise.all(
+        Object.entries(op.op.map).map(async ([to, from]) => {
+          input[to] = await Inputs.resolve({ frame, input: from });
+        }),
+      );
     }
     const result = await func({ op: op.op.id, arg: op.exe.arg, input });
     if (result) {
