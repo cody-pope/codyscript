@@ -18,16 +18,20 @@ export interface Handler<T extends Instruction> {
 
 export const Instructions: Handler<Instruction> = {
   async handle({ frame, instruction }) {
-    if (instruction.$ === "ret") {
+    if (instruction?.$ === "ret") {
       return Returns.handle({ frame, instruction });
-    } else if (instruction.$ === "set") {
+    } else if (instruction?.$ === "set") {
       return Sets.handle({ frame, instruction });
-    } else if (instruction.$ === "for") {
+    } else if (instruction?.$ === "for") {
       return Loops.handle({ frame, instruction });
-    } else if (instruction.$ === "if") {
+    } else if (instruction?.$ === "if") {
       return Conditions.handle({ frame, instruction });
     } else {
-      throw new Error(`Unknown instruction type ${instruction["$"]}!`);
+      throw new Error(
+        `Unknown instruction type ${
+          instruction ? instruction["$"] : undefined
+        }!`,
+      );
     }
   },
 };

@@ -1,6 +1,7 @@
 import { describe, expect, test } from "vitest";
 import { StackFrame } from "../stack";
 import { Condition, Conditions } from "./condition";
+import { Instructions } from "./index";
 
 describe("condition", async () => {
   test("can return in the middle", async () => {
@@ -83,6 +84,26 @@ describe("condition", async () => {
     expect(frame.completed).toBeFalsy();
     expect(frame.result).toBeUndefined();
     await Conditions.handle({ frame, instruction });
+    expect(frame.variables).toStrictEqual({});
+    expect(frame.completed).toBeFalsy();
+    expect(frame.result).toBeUndefined();
+  });
+
+  test("can not blow up if else doesn't exist from index", async () => {
+    const frame: StackFrame = {
+      variables: {},
+    };
+    const instruction: Condition = {
+      $: "if",
+      if: {
+        $: "val",
+        val: false,
+      },
+      do: [],
+    };
+    expect(frame.completed).toBeFalsy();
+    expect(frame.result).toBeUndefined();
+    await Instructions.handle({ frame, instruction });
     expect(frame.variables).toStrictEqual({});
     expect(frame.completed).toBeFalsy();
     expect(frame.result).toBeUndefined();

@@ -2,6 +2,7 @@ import { describe, expect, test } from "vitest";
 import { StackFrame } from "../stack";
 import { Loop, Loops } from "./loop";
 import { Executors } from "../executor";
+import { Instructions } from "./index";
 
 describe("loop", async () => {
   test("can return from infinite loop", async () => {
@@ -27,6 +28,34 @@ describe("loop", async () => {
     expect(frame.completed).toBeFalsy();
     expect(frame.result).toBeUndefined();
     await Loops.handle({ frame, instruction });
+    expect(frame.variables).toStrictEqual({});
+    expect(frame.completed).toBeTruthy();
+    expect(frame.result).toBe(45);
+  });
+
+  test("can return from infinite loop from index", async () => {
+    const frame: StackFrame = {
+      variables: {},
+    };
+    const instruction: Loop = {
+      $: "for",
+      if: {
+        $: "val",
+        val: true,
+      },
+      do: [
+        {
+          $: "ret",
+          ret: {
+            $: "val",
+            val: 45,
+          },
+        },
+      ],
+    };
+    expect(frame.completed).toBeFalsy();
+    expect(frame.result).toBeUndefined();
+    await Instructions.handle({ frame, instruction });
     expect(frame.variables).toStrictEqual({});
     expect(frame.completed).toBeTruthy();
     expect(frame.result).toBe(45);
