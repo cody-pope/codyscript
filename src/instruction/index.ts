@@ -4,6 +4,10 @@ import { Loop, Loops } from "./loop";
 import { Condition, Conditions } from "./condition";
 import { StackFrame } from "../stack";
 
+export { Condition } from "./condition";
+export { Loop } from "./loop";
+export { Return } from "./return";
+export { Set } from "./set";
 export type Instruction = Condition | Loop | Return | Set;
 
 export interface Handler<T extends Instruction> {

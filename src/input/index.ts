@@ -5,6 +5,10 @@ import { StackFrame } from "../stack";
 import { Method, Methods } from "./method";
 import { Value } from "../value";
 
+export { Constant } from "./constant";
+export { Method } from "./method";
+export { Operation } from "./operation";
+export { Reference } from "./reference";
 export type Input = Constant | Method | Operation | Reference;
 
 export interface Resolver<T extends Input> {
