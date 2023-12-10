@@ -4,6 +4,7 @@ import { Handler } from "./index";
 export type Return = {
   $: "ret";
   ret: Input;
+  tag?: string;
 };
 
 export const Returns: Handler<Return> = {

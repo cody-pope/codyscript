@@ -5,6 +5,7 @@ export type Set = {
   $: "set";
   set: string;
   to: Input;
+  tag?: string;
 };
 
 export const Sets: Handler<Set> = {
