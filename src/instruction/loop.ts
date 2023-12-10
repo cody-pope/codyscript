@@ -5,7 +5,7 @@ export type Loop = {
   $: "for";
   if: Input;
   do: Instruction[];
-  tag?: string;
+  tag: string;
 };
 
 export const Loops: Handler<Loop> = {

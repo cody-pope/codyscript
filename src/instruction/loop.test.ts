@@ -11,9 +11,11 @@ describe("loop", async () => {
     };
     const instruction: Loop = {
       $: "for",
+      tag: "4",
       if: {
         $: "val",
         val: true,
+        tag: "3",
       },
       do: [
         {
@@ -21,7 +23,9 @@ describe("loop", async () => {
           ret: {
             $: "val",
             val: 45,
+            tag: "1",
           },
+          tag: "2",
         },
       ],
     };
@@ -39,16 +43,20 @@ describe("loop", async () => {
     };
     const instruction: Loop = {
       $: "for",
+      tag: "4",
       if: {
         $: "val",
         val: true,
+        tag: "3",
       },
       do: [
         {
           $: "ret",
+          tag: "2",
           ret: {
             $: "val",
             val: 45,
+            tag: "1",
           },
         },
       ],
@@ -80,26 +88,32 @@ describe("loop", async () => {
     };
     const instruction: Loop = {
       $: "for",
+      tag: "10",
       if: {
         $: "ref",
         ref: "test",
+        tag: "9",
       },
       do: [
         {
           $: "set",
           set: "test2",
+          tag: "8",
           to: {
             $: "op",
+            tag: "7",
             op: {
               id: "+",
               map: {
                 a: {
                   $: "ref",
                   ref: "test2",
+                  tag: "5",
                 },
                 b: {
                   $: "val",
                   val: 2,
+                  tag: "6",
                 },
               },
             },
@@ -111,18 +125,22 @@ describe("loop", async () => {
         {
           $: "set",
           set: "test",
+          tag: "4",
           to: {
             $: "op",
+            tag: "3",
             op: {
               id: "-",
               map: {
                 a: {
                   $: "ref",
                   ref: "test",
+                  tag: "1",
                 },
                 b: {
                   $: "val",
                   val: 1,
+                  tag: "2",
                 },
               },
             },

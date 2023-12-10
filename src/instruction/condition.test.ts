@@ -10,15 +10,19 @@ describe("condition", async () => {
     };
     const instruction: Condition = {
       $: "if",
+      tag: "4",
       if: {
         $: "val",
         val: true,
+        tag: "1",
       },
       do: [
         {
           $: "ret",
+          tag: "2",
           ret: {
             $: "val",
+            tag: "3",
             val: 45,
           },
         },
@@ -37,15 +41,19 @@ describe("condition", async () => {
       variables: {},
     };
     const instruction: Condition = {
+      tag: "4",
       $: "if",
       if: {
+        tag: "4",
         $: "val",
         val: false,
       },
       do: [
         {
           $: "ret",
+          tag: "4",
           ret: {
+            tag: "4",
             $: "val",
             val: 45,
           },
@@ -53,8 +61,10 @@ describe("condition", async () => {
       ],
       el: [
         {
+          tag: "4",
           $: "ret",
           ret: {
+            tag: "4",
             $: "val",
             val: 46,
           },
@@ -75,7 +85,9 @@ describe("condition", async () => {
     };
     const instruction: Condition = {
       $: "if",
+      tag: "4",
       if: {
+        tag: "4",
         $: "val",
         val: false,
       },
@@ -95,7 +107,9 @@ describe("condition", async () => {
     };
     const instruction: Condition = {
       $: "if",
+      tag: "4",
       if: {
+        tag: "4",
         $: "val",
         val: false,
       },
@@ -115,24 +129,30 @@ describe("condition", async () => {
     };
     const instruction: Condition = {
       $: "if",
+      tag: "4",
       if: {
+        tag: "4",
         $: "val",
         val: true,
       },
       do: [
         {
           $: "set",
+          tag: "4",
           set: "test",
           to: {
             $: "val",
+            tag: "4",
             val: 45,
           },
         },
         {
           $: "set",
           set: "test2",
+          tag: "4",
           to: {
             $: "val",
+            tag: "4",
             val: 46,
           },
         },
@@ -155,24 +175,30 @@ describe("condition", async () => {
     };
     const instruction: Condition = {
       $: "if",
+      tag: "4",
       if: {
         $: "val",
         val: false,
+        tag: "4",
       },
       do: [
         {
           $: "set",
+          tag: "4",
           set: "test",
           to: {
             $: "val",
+            tag: "4",
             val: 45,
           },
         },
         {
           $: "set",
+          tag: "4",
           set: "test2",
           to: {
             $: "val",
+            tag: "4",
             val: 46,
           },
         },
@@ -181,16 +207,20 @@ describe("condition", async () => {
         {
           $: "set",
           set: "test",
+          tag: "4",
           to: {
             $: "val",
+            tag: "4",
             val: 47,
           },
         },
         {
           $: "set",
           set: "test2",
+          tag: "4",
           to: {
             $: "val",
+            tag: "4",
             val: 48,
           },
         },

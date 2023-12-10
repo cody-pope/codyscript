@@ -18,7 +18,7 @@ export type Operation = {
           [arg: string]: Value;
         };
   };
-  tag?: string;
+  tag: string;
 };
 
 export const Operations: Resolver<Operation> = {

@@ -12,6 +12,7 @@ describe("method", async () => {
       $: "m()",
       id: "blah",
       do: [],
+      tag: "4",
     };
     await expect(Methods.resolve({ frame, input })).resolves.toBeUndefined();
     expect(frame.completed).toBeTruthy();
@@ -25,12 +26,15 @@ describe("method", async () => {
     const input: Method = {
       $: "m()",
       id: "blah",
+      tag: "4",
       do: [
         {
           $: "ret",
+          tag: "4",
           ret: {
             $: "val",
             val: 45,
+            tag: "4",
           },
         },
       ],
@@ -47,11 +51,14 @@ describe("method", async () => {
     const input: Method = {
       $: "m()",
       id: "blah",
+      tag: "4",
       do: [
         {
           $: "ret",
+          tag: "4",
           ret: {
             $: "val",
+            tag: "4",
             val: 45,
           },
         },
@@ -71,12 +78,15 @@ describe("method", async () => {
     const input: Method = {
       $: "m()",
       id: "blah",
+      tag: "4",
       do: [
         {
           $: "ret",
+          tag: "4",
           ret: {
             $: "ref",
             ref: "a",
+            tag: "4",
           },
         },
       ],
@@ -93,18 +103,23 @@ describe("method", async () => {
     const input: Method = {
       $: "m()",
       id: "blah",
+      tag: "4",
       do: [
         {
           $: "ret",
+          tag: "4",
           ret: {
+            tag: "4",
             $: "val",
             val: 45,
           },
         },
         {
           $: "ret",
+          tag: "4",
           ret: {
             $: "val",
+            tag: "4",
             val: 46,
           },
         },

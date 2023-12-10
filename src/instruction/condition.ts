@@ -6,7 +6,7 @@ export type Condition = {
   if: Input;
   do: Instruction[];
   el?: Instruction[];
-  tag?: string;
+  tag: string;
 };
 
 export const Conditions: Handler<Condition> = {

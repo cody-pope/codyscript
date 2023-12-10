@@ -13,7 +13,9 @@ describe("set", async () => {
       to: {
         $: "val",
         val: 45,
+        tag: "2",
       },
+      tag: "1",
     };
     await Sets.handle({ frame, instruction });
     expect(frame.variables).toStrictEqual({ test: 45 });
@@ -33,7 +35,9 @@ describe("set", async () => {
       to: {
         $: "val",
         val: 45,
+        tag: "2",
       },
+      tag: "1",
     };
     await Sets.handle({ frame, instruction });
     expect(frame.variables).toStrictEqual({ test: 45 });

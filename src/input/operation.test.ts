@@ -22,6 +22,7 @@ describe("operation", async () => {
     };
     const input: Operation = {
       $: "op",
+      tag: "4",
       op: {
         id: "blah",
       },
@@ -47,6 +48,7 @@ describe("operation", async () => {
     };
     const input: Operation = {
       $: "op",
+      tag: "4",
       op: {
         id: "blah",
       },
@@ -72,6 +74,7 @@ describe("operation", async () => {
     };
     const input: Operation = {
       $: "op",
+      tag: "4",
       op: {
         id: "blah",
       },
@@ -101,6 +104,7 @@ describe("operation", async () => {
     };
     const input: Operation = {
       $: "op",
+      tag: "4",
       op: {
         id: "blah",
       },
@@ -137,11 +141,12 @@ describe("operation", async () => {
     };
     const input: Operation = {
       $: "op",
+      tag: "4",
       op: {
         id: "blah",
         map: {
-          a: { $: "ref", ref: "num1" },
-          b: { $: "ref", ref: "num2" },
+          a: { $: "ref", ref: "num1", tag: "4" },
+          b: { $: "ref", ref: "num2", tag: "4" },
         },
       },
       exe: {

@@ -12,7 +12,9 @@ describe("return", async () => {
       ret: {
         $: "val",
         val: 45,
+        tag: "2",
       },
+      tag: "1",
     };
     expect(frame.completed).toBeFalsy();
     expect(frame.result).toBeUndefined();
@@ -31,7 +33,9 @@ describe("return", async () => {
       ret: {
         $: "ref",
         ref: "test",
+        tag: "2",
       },
+      tag: "1",
     };
     expect(frame.completed).toBeFalsy();
     expect(frame.result).toBeUndefined();

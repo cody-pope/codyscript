@@ -14,6 +14,7 @@ describe("reference", async () => {
     const input: Reference = {
       $: "ref",
       ref: "a",
+      tag: "4",
     };
     await expect(References.resolve({ frame, input })).resolves.toBe(45);
     expect(frame.completed).toBeFalsy();
@@ -30,6 +31,7 @@ describe("reference", async () => {
     const input: Reference = {
       $: "ref",
       ref: "a",
+      tag: "4",
     };
     await expect(Inputs.resolve({ frame, input })).resolves.toBe(45);
     expect(frame.completed).toBeFalsy();
@@ -45,6 +47,7 @@ describe("reference", async () => {
     const input: Reference = {
       $: "ref",
       ref: "a",
+      tag: "4",
     };
     await expect(References.resolve({ frame, input })).resolves.toBeUndefined();
     expect(frame.completed).toBeFalsy();

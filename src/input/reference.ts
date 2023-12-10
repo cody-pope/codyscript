@@ -3,7 +3,7 @@ import { Resolver } from "./index";
 export type Reference = {
   $: "ref";
   ref: string;
-  tag?: string;
+  tag: string;
 };
 
 export const References: Resolver<Reference> = {

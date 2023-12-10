@@ -5,7 +5,7 @@ export type Method = {
   $: "m()";
   id: string;
   do: Instruction[];
-  tag?: string;
+  tag: string;
 };
 
 export const Methods: Resolver<Method> = {

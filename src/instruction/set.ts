@@ -5,7 +5,7 @@ export type Set = {
   $: "set";
   set: string;
   to: Input;
-  tag?: string;
+  tag: string;
 };
 
 export const Sets: Handler<Set> = {

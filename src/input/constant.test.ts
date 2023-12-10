@@ -11,6 +11,7 @@ describe("constant", async () => {
     const input: Constant = {
       $: "val",
       val: "a",
+      tag: "4",
     };
     await expect(Constants.resolve({ frame, input })).resolves.toBe("a");
     expect(frame.completed).toBeFalsy();
@@ -24,6 +25,7 @@ describe("constant", async () => {
     const input: Constant = {
       $: "val",
       val: "a",
+      tag: "4",
     };
     await expect(Inputs.resolve({ frame, input })).resolves.toBe("a");
     expect(frame.completed).toBeFalsy();
@@ -37,6 +39,7 @@ describe("constant", async () => {
     const input: Constant = {
       $: "val",
       val: 45,
+      tag: "4",
     };
     await expect(Constants.resolve({ frame, input })).resolves.toBe(45);
     expect(frame.completed).toBeFalsy();
